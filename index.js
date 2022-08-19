@@ -9,7 +9,10 @@ let srcContent = null;
 
 contentInput.onfocus = () => {
 	contentInput.addEventListener("keydown", function (e) {
-		if (e.keyCode == 13 && e.ctrlKey) insert.click();
+		if (e.keyCode == 13 && e.ctrlKey) {
+			insert.click();
+			contentInput.innerText = "";
+		}
 	});
 };
 contentInput.focus();
@@ -36,6 +39,7 @@ function insertFn() {
 		arr.push(obj);
 		localStorage.setItem("list", JSON.stringify(arr));
 
+		contentInput.innerText = "";
 		setTimeout(() => {
 			insertFlag = true;
 		}, 500);
