@@ -1,0 +1,125 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+.insert {
+	margin: 10px auto;
+	width: 20%;
+	height: 48px;
+	line-height: 48px;
+	text-align: center;
+	border-radius: 10px;
+	background-color: rgba(204, 204, 204, 0.5);
+	filter: drop-shadow(8px 8px 10px rgba(122, 121, 121, 0.904));
+	cursor: pointer;
+}
+
+.insert:hover {
+	filter: drop-shadow(8px 8px 10px pink);
+}
+
+.insertPic {
+	vertical-align: middle;
+	margin: 0px 50px;
+}
+
+.clear {
+	position: absolute;
+	right: 32%;
+	top: 30px;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+.clearPic {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.clearPic:hover,
+.insert:hover .insertPic {
+	animation: Rotate 1.2s forwards;
+}
+
+.contentInput {
+	width: 300px;
+	height: 100px;
+	margin: 50px auto 10px;
+	background-color: rgba(204, 204, 204, 0.5);
+	padding: 10px;
+	overflow-y: auto;
+}
+
+.content {
+	width: 20%;
+	padding: 10px;
+	margin: 0px auto;
+}
+
+.contentChild {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	margin: 0px 0px 20px 0px;
+	width: 100%;
+	font-size: 16px;
+	border-radius: 10px;
+	word-break: break-all;
+	background-color: rgba(204, 204, 204, 0.5);
+	filter: drop-shadow(5px 5px 5px rgba(122, 121, 121, 0.5));
+}
+
+.contentChild:before {
+	display: inline-block;
+	width: 24px;
+	height: 100%;
+	margin-right: 10px;
+	text-align: center;
+	border-radius: 10px;
+	background-color: #fff;
+	content: attr(list-index);
+}
+
+.contentClear {
+	position: absolute;
+	top: 2px;
+	right:-20px;
+	cursor: pointer;
+}
+.contentClear:hover{
+	color: red;
+	animation: Rotate 1.2s forwards;
+}
+
+.tip {
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 10px;
+	background-color: rgba(204, 204, 204, 0.5);
+}
+
+@keyframes Rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.clearfix::before,
+.clearfix::after {
+	content: "";
+	display: table;
+}
+.clearfix::after {
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}
