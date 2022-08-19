@@ -1,3 +1,9 @@
+window.onload = function () {
+	document.body.oncontextmenu = function (e) {
+		e.preventDefault();
+	};
+};
+
 var storageLength = window.localStorage.length;
 var insert = document.querySelector("#insert");
 var contentInput = document.querySelector("#contentInput");
@@ -74,6 +80,36 @@ function contentInsertChild(content, str) {
 		localStorage.setItem("list", JSON.stringify(arr));
 	};
 	temp.innerText = str;
+	temp.oncontextmenu = function (e) {
+		e.preventDefault();
+		if (e.button == 2) {
+			let tempMenu = document.querySelector(".rightMenu");
+			tempMenu == null ? null : document.body.removeChild(tempMenu);
+
+			let menu = document.createElement("div");
+			menu.className = "rightMenu";
+			menu.style.left = e.pageX + "px";
+			menu.style.top = e.pageY + "px";
+
+			let menuClear = document.createElement("div");
+			menuClear.className = "menuClear";
+			menuClear.innerHTML = "删除";
+
+			menuClear.onclick = function () {
+				let tempIndex = temp.getAttribute("list-index");
+				for (let i = tempIndex; i < arr.length; i++) {
+					temp.parentNode.childNodes[i].setAttribute("list-index", i);
+				}
+				arr.splice(tempIndex - 1, 1);
+				localStorage.setItem("list", JSON.stringify(arr));
+				temp.parentNode.removeChild(temp);
+				document.body.removeChild(document.querySelector(".rightMenu"));
+			};
+
+			menu.appendChild(menuClear);
+			document.body.appendChild(menu);
+		}
+	};
 	content.appendChild(temp);
 }
 
