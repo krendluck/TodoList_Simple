@@ -4,6 +4,11 @@
 	user-select: none;
 }
 
+body {
+	position: relative;
+	top: 0px;
+	right: 0px;
+}
 .insert {
 	margin: 10px auto;
 	width: 20%;
@@ -87,10 +92,10 @@
 .contentClear {
 	position: absolute;
 	top: 2px;
-	right:-20px;
+	right: -20px;
 	cursor: pointer;
 }
-.contentClear:hover{
+.contentClear:hover {
 	color: red;
 	animation: Rotate 1.2s forwards;
 }
@@ -101,6 +106,22 @@
 	text-align: center;
 	border-radius: 10px;
 	background-color: rgba(204, 204, 204, 0.5);
+}
+
+.rightMenu {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	width: 50px;
+	background-color: pink;
+	text-align: center;
+}
+
+.menuClear {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	font-size: 16px;
 }
 
 @keyframes Rotate {
