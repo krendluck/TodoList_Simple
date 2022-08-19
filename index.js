@@ -28,7 +28,9 @@ let arr = [];
 let gettext = JSON.parse(localStorage.getItem("list"));
 if (gettext) {
 	arr = gettext;
-	for (let i = 0; i < gettext.length; i++) contentInsertChild(content, gettext[i].content);
+	for (let i = 0; i < gettext.length; i++) {
+		contentInsertChild(content, gettext[i]);
+	}
 } else arr = [];
 // 节流
 let insertFlag = true;
@@ -36,11 +38,7 @@ function insertFn() {
 	if (insertFlag && contentInput.innerText.trim() != "") {
 		insertFlag = false;
 		contentInsertChild(content, contentInput.innerText.trim());
-
-		let obj = {};
-		obj.index = content.childNodes.length;
-		obj.content = contentInput.innerText.trim();
-		arr.push(obj);
+		arr.push(contentInput.innerText.trim());
 		localStorage.setItem("list", JSON.stringify(arr));
 
 		contentInput.innerText = "";
@@ -72,24 +70,10 @@ function contentInsertChild(content, str) {
 		let temp1 = src.getAttribute("list-index") - 1;
 		let temp2 = e.target.getAttribute("list-index") - 1;
 		[arr[temp1], arr[temp2]] = [arr[temp2], arr[temp1]];
+
 		localStorage.setItem("list", JSON.stringify(arr));
 	};
 	temp.innerText = str;
-
-	let tempClear = document.createElement("div");
-	tempClear.className = "contentClear icon-shanchu2";
-	tempClear.onclick = function () {
-		let tmepIndex = this.parentNode.getAttribute("list-index") - 1;
-		arr.splice(tmepIndex);
-		localStorage.setItem("list", JSON.stringify(arr));
-		this.parentNode.parentNode.removeChild(this.parentNode);
-		for (let i = 0; i < content.childNodes.length; i++) {
-			content.childNodes[i].setAttribute("list-index", i + 1);
-		}
-	};
-
-	temp.appendChild(tempClear);
-
 	content.appendChild(temp);
 }
 
