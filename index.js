@@ -8,13 +8,17 @@ let src = null;
 let srcContent = null;
 
 contentInput.onfocus = () => {
-	contentInput.addEventListener("keydown", function (e) {
-		if (e.keyCode == 13 && e.ctrlKey) {
-			insert.click();
-			contentInput.innerText = "";
-		}
-	});
+	contentInput.addEventListener("keydown", fn);
 };
+contentInput.onblur = () => {
+	contentInput.removeEventListener("keydown", fn);
+};
+function fn(e) {
+	if (e.keyCode == 13 && e.ctrlKey) {
+		insert.click();
+		contentInput.innerText = "";
+	}
+}
 contentInput.focus();
 insert.onclick = insertFn;
 clear.onclick = clearFn;
