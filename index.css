@@ -8,6 +8,7 @@ body {
 	position: relative;
 	top: 0px;
 	right: 0px;
+	min-width: 800px;
 }
 .insert {
 	margin: 10px auto;
@@ -32,7 +33,7 @@ body {
 
 .clear {
 	position: absolute;
-	right: 32%;
+	right: 35%;
 	top: 30px;
 	width: 32px;
 	height: 32px;
@@ -71,11 +72,17 @@ body {
 	left: 0px;
 	margin: 0px 0px 20px 0px;
 	width: 100%;
+	border: 2px solid rgba(255, 255, 255, 0);
 	font-size: 16px;
 	border-radius: 10px;
 	word-break: break-all;
 	background-color: rgba(204, 204, 204, 0.5);
 	filter: drop-shadow(5px 5px 5px rgba(122, 121, 121, 0.5));
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.contentChild:hover {
+	border: 2px solid rgba(135, 207, 235, 0.5);
 }
 
 .contentChild:before {
@@ -87,17 +94,6 @@ body {
 	border-radius: 10px;
 	background-color: #fff;
 	content: attr(list-index);
-}
-
-.contentClear {
-	position: absolute;
-	top: 2px;
-	right: -20px;
-	cursor: pointer;
-}
-.contentClear:hover {
-	color: red;
-	animation: Rotate 1.2s forwards;
 }
 
 .tip {
@@ -113,15 +109,17 @@ body {
 	left: 0px;
 	right: 0px;
 	width: 50px;
-	background-color: pink;
+	background-color: #fff;
+	border-radius: 10px;
+	font-size: 16px;
 	text-align: center;
+	border: 1px solid #ccc;
 }
 
 .menuClear {
-	width: 100%;
+	width: 50px;
 	height: 20px;
 	line-height: 20px;
-	font-size: 16px;
 }
 
 @keyframes Rotate {
