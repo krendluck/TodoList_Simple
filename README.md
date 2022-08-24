@@ -3,6 +3,7 @@
 [功能展示](https://todo-list-simple-taupe.vercel.app/)
 
 ## 后期改进
-1. 改进拖动视觉效果
-2. 优化整体布局
-3. Vue组件化
+
+1. 优化整体布局
+2. Vue组件化
+3. 改进拖动视觉效果
