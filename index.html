@@ -7,16 +7,16 @@
 		<title>TodoList</title>
 		<link rel="stylesheet" href="font.css" />
 		<link rel="stylesheet" href="index.css" />
-		
 	</head>
 	<body>
-		<div class="clear" id="clear">
-			<img class="clearPic" id="clearPic" src="picture/clear.png" alt="" />
-		</div>
 		<div class="content clearfix TodoList" id="content"></div>
-		<p class="insert" id="insert">
-			<img class="insertPic" src="picture/add.png" alt="" />
-		</p>
+		<div class="clear" id="clear">
+			<img class="clearPic" id="clearPic" src="picture/clear.png" />
+		</div>
+		<div class="insert" id="insert">
+			<img class="insertPic" src="picture/add.png" />
+		</div>
+
 		<div class="contentInput" id="contentInput" contenteditable="true"></div>
 		<div class="tip" id="tip">
 			1. Ctrl + Enter &nbsp; 快捷提交
@@ -26,6 +26,11 @@
 			3. 可上下拖动
 			<br />
 		</div>
+
+		<label class="switch">
+			<input type="checkbox" class="checkbox" id="checkbox" onclick="check(this)" />
+			<div class="slider"></div>
+		</label>
 	</body>
 	<script src="index.js"></script>
 </html>

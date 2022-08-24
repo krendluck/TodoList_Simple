@@ -8,11 +8,12 @@ body {
 	position: relative;
 	top: 0px;
 	right: 0px;
-	min-width: 800px;
+	min-width: 1000px;
 }
 .insert {
 	margin: 10px auto;
-	width: 20%;
+	width: 15%;
+	min-width: 150px;
 	height: 48px;
 	line-height: 48px;
 	text-align: center;
@@ -33,7 +34,7 @@ body {
 
 .clear {
 	position: absolute;
-	right: 35%;
+	right: 28%;
 	top: 30px;
 	width: 32px;
 	height: 32px;
@@ -52,28 +53,30 @@ body {
 }
 
 .contentInput {
-	width: 300px;
+	width: 20%;
+	min-width: 300px;
 	height: 100px;
 	margin: 50px auto 10px;
-	
 	padding: 10px;
 	background-color: rgba(204, 204, 204, 0.5);
-	border-radius:15px;
+	border-radius: 15px;
 	overflow-y: auto;
 }
 
 .content {
-	width: 20%;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 15%;
+	min-width: 200px;
 	padding: 10px;
 	margin: 0px auto;
 }
 
 .contentChild {
-	position: relative;
-	top: 0px;
-	left: 0px;
 	margin: 0px 0px 20px 0px;
 	width: 100%;
+	min-width: 200px;
 	border: 2px solid rgba(255, 255, 255, 0);
 	font-size: 16px;
 	border-radius: 10px;
@@ -108,7 +111,6 @@ body {
 	background-color: rgba(204, 204, 204, 0.5);
 }
 
-
 .rightMenu {
 	position: absolute;
 	left: 0px;
@@ -125,6 +127,52 @@ body {
 	width: 50px;
 	height: 20px;
 	line-height: 20px;
+}
+
+.switch {
+	position: absolute;
+	right: 32%;
+	top: 30px;
+}
+
+.checkbox {
+	display: none;
+}
+
+.slider {
+	width: 60px;
+	height: 30px;
+	background-color: lightgray;
+	border-radius: 20px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	border: 4px solid transparent;
+	transition: 0.3s;
+	box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.25) inset;
+	cursor: pointer;
+}
+
+.slider::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	transform: translateX(-30px);
+	border-radius: 20px;
+	transition: 0.3s;
+	box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+}
+
+.checkbox:checked ~ .slider::before {
+	transform: translateX(30px);
+	box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+	background-color: #000;
+}
+
+.checkbox:checked ~ .slider {
+	background-color: #ffffff80;
 }
 
 @keyframes Rotate {

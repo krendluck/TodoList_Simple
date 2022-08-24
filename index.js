@@ -1,14 +1,25 @@
-window.onload = function () {
-	document.body.oncontextmenu = function (e) {
-		e.preventDefault();
-	};
-};
-
 var storageLength = window.localStorage.length;
 var insert = document.querySelector("#insert");
 var contentInput = document.querySelector("#contentInput");
 var content = document.querySelector("#content");
 var clear = document.querySelector("#clear");
+
+let checkbox = document.querySelector("#checkbox");
+function check(obj) {
+	if (obj.checked == true) document.body.style.background = "#212121";
+	else document.body.style.background = "#fff";
+}
+
+window.onload = function () {
+	document.body.oncontextmenu = function (e) {
+		e.preventDefault();
+	};
+	document.body.addEventListener("keydown", function (e) {
+		if ((e.key == "i" || e.key == "I") && e.ctrlKey) {
+			contentInput.focus();
+		}
+	});
+};
 
 let src = null;
 let srcContent = null;
@@ -54,6 +65,7 @@ function insertFn() {
 	} else if (contentInput.innerText.trim() == "") alert("输入内容为空");
 }
 
+let menuClock = null;
 // 插入节点
 function contentInsertChild(content, str) {
 	let temp = document.createElement("div");
@@ -83,6 +95,7 @@ function contentInsertChild(content, str) {
 	temp.oncontextmenu = function (e) {
 		e.preventDefault();
 		if (e.button == 2) {
+			menuClock && clearTimeout(menuClock);
 			let tempMenu = document.querySelector(".rightMenu");
 			tempMenu == null ? null : document.body.removeChild(tempMenu);
 
@@ -94,6 +107,15 @@ function contentInsertChild(content, str) {
 			let menuClear = document.createElement("div");
 			menuClear.className = "menuClear";
 			menuClear.innerHTML = "删除";
+			menuClear.onmouseout = function () {
+				menuClock && clearTimeout(menuClock);
+				menuClock = setTimeout(() => {
+					if (document.querySelector(".rightMenu") != null) {
+						menuClear.onmouseout = "";
+						document.body.removeChild(document.querySelector(".rightMenu"));
+					}
+				}, 1000);
+			};
 
 			menuClear.onclick = function () {
 				let tempIndex = temp.getAttribute("list-index");
