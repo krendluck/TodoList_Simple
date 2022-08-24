@@ -99,12 +99,15 @@ body {
 }
 
 .tip {
-	width: 300px;
+	width: 20%;
+	min-width: 300px;
 	margin: 0 auto;
-	text-align: center;
+	padding-left: 70px;
+	box-sizing: border-box;
 	border-radius: 10px;
 	background-color: rgba(204, 204, 204, 0.5);
 }
+
 
 .rightMenu {
 	position: absolute;
